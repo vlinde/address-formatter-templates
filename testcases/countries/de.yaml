@@ -51,6 +51,7 @@ components:
     state_district: Regierungsbezirk Köln
 expected:  |
     Cologne
+    North Rhine-Westphalia
     Germany
 
 ---
@@ -64,7 +65,7 @@ components:
     state_district: Upper Bavaria
 expected:  |
     Köln
-    Bayern
+    Bavaria
     Germany
 
 ---
@@ -158,3 +159,38 @@ expected:  |
     Bahnstraße
     66849 Landstuhl
     Germany
+---
+# clean up come components
+description: Maxvorstadt, Munich
+components:
+    city: Munich
+    city_district: Stadtbezirk 03 Maxvorstadt
+    country: Germany
+    country_code: de
+    state: Free State of Bavaria
+    state_district: Upper Bavaria
+expected:  |
+    Maxvorstadt
+    Munich
+    Bavaria
+    Germany
+---
+# clean up postcode
+description: multiple postcodes 49.9886629614539, 9.1545295715332
+components:
+        building: DS Smith Paper Deutschland GmbH
+        country: Germany
+        country_code: de
+        county: Aschaffenburg
+        postcode: 63739,63741,63743
+        road: Haselmühlweg
+        state: Free State of Bavaria
+        state_district: Lower Franconia
+        suburb: Damm
+        town: Aschaffenburg
+expected:  |
+    DS Smith Paper Deutschland GmbH
+    Haselmühlweg
+    63739 Aschaffenburg
+    Germany
+

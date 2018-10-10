@@ -1,7 +1,7 @@
 # ordered list, smallest to largest
 name: house_number
----
-name: street_number
+aliases:
+    - street_number
 ---
 name: house
 aliases:
@@ -16,6 +16,8 @@ aliases:
     - residential
     - path
     - pedestrian
+    - road_reference
+    - road_reference_intl    
 ---
 name: village
 aliases:
@@ -32,6 +34,9 @@ aliases:
     - town
 ---
 name: county
+aliases:
+    - local_administrative_area
+    - county_code
 ---
 name: postcode
 ---

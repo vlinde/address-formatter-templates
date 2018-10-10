@@ -1,5 +1,7 @@
+[![Build Status](https://travis-ci.org/OpenCageData/address-formatting.svg?branch=master)](https://travis-ci.org/OpenCageData/address-formatting)
+
 # address formatting
- 
+
 
 ### A quick example
 
@@ -33,7 +35,7 @@ territories around the world. It also contains test cases.
 
 ### Which addresses we're talking about
 
-The intended use-case is database or geocoding systems (forward, reverse, autocomplete) where we know both the country of the address and the language of the user/reader. The address is displayed to a consumer (for example in an app) and not used to print on an envelope for actual postal delivery. We use it to format output from the [OpenCage Geocoder](https://geocoder.opencagedata.com).
+The intended use-case is database or geocoding systems (forward, reverse, autocomplete) where we know both the country of the address and the language of the user/reader. The address is displayed to a consumer (for example in an app) and not used to print on an envelope for actual postal delivery. We use it to format output from the [OpenCage Geocoder](https://opencagedata.com).
 
 We have to deal with
 
@@ -44,7 +46,7 @@ Unlike [physical post (office) mail](http://www.bitboost.com/ref/international-a
 
    * apartment/flat number, floor numbers
    * PO boxes
-   * translating the language of the (destination) address. Whatever langauge is input is output. 
+   * translating the language of the (destination) address. Whatever language is input is output. 
   
 ### Processing logic
 
@@ -58,14 +60,16 @@ If you do write a processor, please let us know so we can list it here.
 
 ### Coverage
 
-As of `Thu 10 Mar 2016 11:58:06 CET` coverage is:
+As of `Sat 25 Mar 2017` coverage is:
 
-    We are aware of 249 territories
-    We have tests for 226 (90%) territories
+    We are aware of 248 territories
+    We have tests for 250 (100%) territories
     We have rules for 249 (100%) territories
     0 (0%) territories have neither rules nor tests
 
-A detailed breakdown of test and configuration coverage can be found by running `bin/coverage.pl`. A list of all known territories is in `conf/country_codes.yaml` Note: the list is simple all officially assigned [ISO 3166-1 alpha-2 codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements), and is not a political statement on whether or not these territories are or are not or should or should not be political states. 
+We need more language specific abbreviations, please see `conf/abbreviations`
+
+A detailed breakdown of test and configuration coverage can be found by running `bin/coverage.pl -d`. A list of all known territories is in `conf/country_codes.yaml` Note: the list is simple all officially assigned [ISO 3166-1 alpha-2 codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements), and is not a political statement on whether or not these territories are or are not or should or should not be political states. 
 
 ### File format
 
@@ -73,13 +77,13 @@ The files are in [YAML](http://yaml.org/) format. The templates are written in [
 
 ### How to add your country/territory
 
-1. add a .yaml testcase in `testcases/countries`, using the appropriate ISO 3166-1 alpha-2 code - see `conf/country_codes.yaml`
+1. edit the .yaml testcase for the country/territory in `testcases/countries`. The file names correspond to the appropriate ISO 3166-1 alpha-2 code - see `conf/country_codes.yaml`
   * a good way to get sample data is:
       * find an addressed location (house, business, etc) in your
         target territory in OpenStreetMap
       * get the coordinates (lat, long) of the location
       * put the coordinates into the [OpenCage Geocoder demo
-        page](https://geocoder.opencagedata.com/demo)
+        page](https://opencagedata.com/demo)
       * look at the resulting JSON in the *Raw Response* tab
 
 2. edit `conf/countries/worldwide.yaml`
@@ -111,7 +115,6 @@ More tests! For every rule about addresses there are exceptions and edge cases t
 
 Planned features
 
-  * optionally shorten/abbreviate addresses, e.g. 'Hoover Str' instead of 'Hoover Street'
   * basic error checking, for example ignore things which obviously can not be postcodes
   * define rules for postcode format specifically
 
@@ -119,17 +122,18 @@ We welcome your pull requests. Together we can address the world!
 
 ### Who are we?
 
-We run the [OpenCage Geocoder](https://geocoder.opencagedata.com). 
-Previously, before beine spun off as a seperate company, we were a division of [Lokku](http://www.lokku.com), long time supporters of OpenStreetMap and open data initiatives. We also run [#geomob](http://geomobldn.org), a meetup of London location based service developers where we do our best to highlight geoinnovation. 
+We run the [OpenCage Geocoder](https://opencagedata.com). 
+
+We also run [#geomob](http://geomobldn.org), a meetup of London location based service developers where we do our best to highlight geoinnovation. 
 
 ### Further reading
 
-Here's [our blog post anouncing this project](http://blog.opencagedata.com/post/99059889253/good-looking-addresses-solving-the-berlin-berlin) and the motivations behind it.
+Here's [our blog post anouncing this project](https://blog.opencagedata.com/post/99059889253/good-looking-addresses-solving-the-berlin-berlin) and the motivations behind it.
 
 You may enjoy Michael Tandy's [Falsehoods Programmers Believe about Addresses](http://www.mjt.me.uk/posts/falsehoods-programmers-believe-about-addresses/).
 
 If it's actual address data you're after, check out [OpenAddresses](http://openaddresses.io/).
 
-If you want to turn longitude, latitude into addresses or placenames, well that's what a geocoder does. Check out ours: [OpenCage Geocoder](https://geocoder.opencagedata.com).
+If you want to turn longitude, latitude into well formatted addresses or placenames, well that's what a geocoder does. Check out ours: [OpenCage Geocoder](https://opencagedata.com).
 
-If all this convinces you address are evil, please check out [what3words](http://what3words.com/) which allows you to dispense with them entirely. 
+If all this convinces you that address are evil, please check out [what3words](http://what3words.com) which allows you to dispense with them entirely. 
