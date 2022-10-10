@@ -1,5 +1,5 @@
 {
-    "name": "predicthq/address-formatter-templates",
+    "name": "vlinde/address-formatter-templates",
     "description": "Address formatter templates from https://github.com/OpenCageData/address-formatting - used with the predicthq/address-formatter package.",
     "keywords": ["predicthq","address","templates"],
     "type": "library",
